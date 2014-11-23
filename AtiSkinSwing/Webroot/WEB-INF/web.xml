@@ -1,0 +1,27 @@
+<web-app>
+<error-page>
+ 
+   <error-code>500</error-code>
+ 
+   <location>/err/ubye.jsp</location>
+ 
+  </error-page>
+  
+    <error-page>
+ 
+   <error-code>503</error-code>
+ 
+   <location>/err/ulinse.html</location>
+ 
+  </error-page>  
+ 
+   
+ 
+  <error-page>
+ 
+   <error-code>404</error-code>
+ 
+   <location>/err/slins.html</location>
+ 
+  </error-page>
+</web-app>

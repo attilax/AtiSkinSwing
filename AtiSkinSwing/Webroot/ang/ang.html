@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body><script type="text/javascript" src="angular.min.js"></script>
+<script>
+
+
+function AlbumCtrl($scope) { 
+
+    $scope.images = "aa";
+	$scope.user = "cc";
+	//alert($scope);
+
+} 
+
+</script>
+
+
+<div ng-controller="AlbumCtrl">
+{{  $scope}}
+img:{{images}}
+<input name="userName" type="text" ng-model="user"  />
+</div>
+
+
+
+ <table width="600" border="1" cellspacing="0" cellpadding="0" ng-controller="AlbumCtrl">
+
+    <tr>
+
+      <td>img</td>
+
+      <td>name</td>
+
+      <td>op</td>
+
+    </tr>
+
+    <tr ng-repeat="image in images">
+
+      <td>{{image.url}}---------</td>
+
+      <td>{{image.description}}</td>
+
+      <td>aaa</td>
+
+    </tr>
+
+  </table> 
+</body>
+</html>

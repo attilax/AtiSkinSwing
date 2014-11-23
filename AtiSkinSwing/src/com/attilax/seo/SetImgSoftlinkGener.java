@@ -29,7 +29,7 @@ import com.birosoft.liquid.LiquidLookAndFeel;
 import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
 
-public class SetImgSoftlinkGener   {
+public class SetImgSoftlinkGener extends JFrame  {
 
 	private JFrame frame;
 	private JTextField txtWatcheskof;
@@ -53,6 +53,7 @@ public class SetImgSoftlinkGener   {
 			public void run() {
 				try {
 					SetImgSoftlinkGener window = new SetImgSoftlinkGener();
+				//	window.show();
 				//	window.comboBox.addItem(arg0);
 				//	window.comboBox.addItem(new String[]{"a","b"});
 					SkinX.setComboBoxVal(window.comboBox);
@@ -157,6 +158,8 @@ public class SetImgSoftlinkGener   {
 		frame.getContentPane().add(txtimagesallwatchesttwimagemedium);
 		
 		  comboBox = new JComboBox();
+		  springLayout.putConstraint(SpringLayout.WEST, comboBox, 382, SpringLayout.WEST, frame.getContentPane());
+		  springLayout.putConstraint(SpringLayout.EAST, comboBox, -30, SpringLayout.EAST, frame.getContentPane());
 		  comboBox.addItemListener(new ItemListener() {
 		  	public void itemStateChanged(ItemEvent arg0) {
 		  		skinCombox_change_event(arg0);
@@ -168,19 +171,17 @@ public class SetImgSoftlinkGener   {
 //		  	}
 //		  });
 		springLayout.putConstraint(SpringLayout.NORTH, comboBox, 1, SpringLayout.NORTH, btnNewButton);
-		springLayout.putConstraint(SpringLayout.WEST, comboBox, -149, SpringLayout.EAST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, comboBox, 0, SpringLayout.EAST, txtWatcheskof);
 		frame.getContentPane().add(comboBox);
 		
 		JLabel lblSkin = new JLabel("skin");
 		springLayout.putConstraint(SpringLayout.NORTH, lblSkin, 4, SpringLayout.NORTH, btnNewButton);
-		springLayout.putConstraint(SpringLayout.EAST, lblSkin, -21, SpringLayout.WEST, comboBox);
+		springLayout.putConstraint(SpringLayout.EAST, lblSkin, -17, SpringLayout.WEST, comboBox);
 		frame.getContentPane().add(lblSkin);
 	}
 protected void skinCombox_change_event(ItemEvent e) {
 	  if(e.getStateChange() == ItemEvent.SELECTED){  
 	 String index= (String) this.comboBox.getSelectedItem();
-	 SkinX.setSkin(index,frame);
+	 SkinX.setSkin(index,this.frame);
 	MsgBox.setTxt("ttt");
 	 }
 		

@@ -24,26 +24,37 @@ public class SkinX {
 	// }
 	private static void setUndecoratedTitlebar(JFrame frame, boolean b) {
 		// -----------refresh titlebar
+    if("1".equals("1"))return;
+		try {
+			frame.hide();
+			frame.setVisible(false);
+		 	frame.dispose();
+		 
+			frame.setUndecorated(b);
+			// if(index.equals("windows"))
+			// {
+			// frame.setUndecorated(false);// set Notitlebar true
+			// //set frame whether show raw ExtraTitlebar
+			// }else
+			// {
+			// frame.setUndecorated(true);
+			// }
 
-		frame.dispose();
-		frame.setUndecorated(b);
-		// if(index.equals("windows"))
-		// {
-		// frame.setUndecorated(false);// set Notitlebar true
-		// //set frame whether show raw ExtraTitlebar
-		// }else
-		// {
-		// frame.setUndecorated(true);
-		// }
-
-		frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);// set
-																		// titlebar
-		Notitlebar = true;
-		frame.setVisible(true);
+			frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);// set
+		//	frame.show();		
+		//	frame.sh// titlebar
+			Notitlebar = true;
+			
+		 	frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
 
 	}
 
 	public static Map map;
+	private static Map map2=new HashMap();
 	static {
 		map = new HashMap() {
 			{
@@ -51,24 +62,32 @@ public class SkinX {
 
 					@Override
 					public void ini(JFrame frame) {
-						setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+						 
+						setLookAndFeel(skinName_class.windows);
 						setUndecoratedTitlebar(frame, false);
 
 					}
 
 				});
+				map2.put("windows", skinName_class.windows);
+				
 				// --指定为Windows的界面外观, 仅在Windows平台起作用.
 				this.put("mac.Liquid", new IS‌kinInir() {
 
 					@Override
 					public void ini(JFrame frame) {
-						String skinClass = "com.birosoft.liquid.LiquidLookAndFeel";
-						setLookAndFeel(skinClass);
+						 
+						setLookAndFeel( skinName_class.mac_Liquid);
 						LiquidLookAndFeel.setLiquidDecorations(true);
 						setUndecoratedTitlebar(frame, true);
 					}
 
 				});
+				map2.put("mac.Liquid", skinName_class.mac_Liquid);
+				 
+				
+				
+				
 				// UIManager.get
 				this.put("java", new IS‌kinInir() {
 
@@ -80,6 +99,9 @@ public class SkinX {
 						setUndecoratedTitlebar(frame, true);
 					}
 				});
+				
+				map2.put("java", UIManager
+						.getCrossPlatformLookAndFeelClassName());
 				// );
 				// "javax.swing.plaf.metal.MetalLookAndFeel"
 				// --指定为Java的界面外观,
@@ -94,6 +116,8 @@ public class SkinX {
 						setUndecoratedTitlebar(frame, false);
 					}
 				});
+				map2.put("sys",UIManager
+								.getSystemLookAndFeelClassName());
 				// );
 				// UIManager.getSystemLookAndFeelClassName()
 				// --指定为当前平台的界面外观.在32位Windows平台, 为Windows界面外观; 在Mac OS平台, 为Mac
@@ -108,6 +132,16 @@ public class SkinX {
 						setUndecoratedTitlebar(frame, false);
 					}
 				});
+			 
+			 
+ 
+				
+				putX(this,new String[]{"Substance.MistSilver,org.jvnet.substance.skin.SubstanceMistSilverLookAndFeel","Substance.NebulaBrickWall,org.jvnet.substance.skin.SubstanceNebulaBrickWallLookAndFeel","jtattoo.acryl,  com.jtattoo.plaf.acryl.AcrylLookAndFeel","sun.nimbus,com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel",				"substance.BusinessBlueSteel,org.jvnet.substance.skin.SubstanceBusinessBlueSteelLookAndFeel",
+						"Substance.Creme,org.jvnet.substance.skin.SubstanceCremeLookAndFeel"},false);
+				
+				
+				
+			
 				// );
 
 				// --指定为CDE/Motif的界面外观, 可以在所有平台起作用.
@@ -125,6 +159,7 @@ public class SkinX {
 	}
 
 	private static void setLookAndFeel(String skinClass) {
+		skinClass=skinClass.trim();
 		try {
 			UIManager.setLookAndFeel(skinClass);
 		} catch (ClassNotFoundException e) {
@@ -143,6 +178,30 @@ public class SkinX {
 
 		}
 	}
+
+	protected static void putX(Map mp, String[] strings, boolean b) {
+	     for (String skiname : strings) {
+	    	 String[] a=skiname.split(",");
+	    	 String name=a[0].trim();
+	    	 String cls=a[1].trim();
+	    	 mp.put(name, new IS‌kinInir() {
+
+					@Override
+					public void ini(JFrame frame) {
+
+						setLookAndFeel(cls);
+						setUndecoratedTitlebar(frame, b);
+					}
+				});
+	    	 map2.put(name, cls);
+		}
+		
+	}
+
+//	protected static void putX(Map mp,   String[] strings) {
+//		 
+//		
+//	}
 
 	public static void main(String[] args) {
 
@@ -165,25 +224,47 @@ public class SkinX {
 	}
 
 	public static void setSkin(String index, JFrame frame) {
-		Object item = SkinX.map.get(index);
+		switchLnF( SkinX.map2.get(index).toString(),frame);
+		if("1".equals("1"))return;
+		
+		try {
+			Object item = SkinX.map.get(index);
+		
 
-		// 改变标题栏 title bar and border JFrame JDialog
-		JFrame.setDefaultLookAndFeelDecorated(true);
-		JDialog.setDefaultLookAndFeelDecorated(true);
+			// 改变标题栏 title bar and border JFrame JDialog
+		 	JFrame.setDefaultLookAndFeelDecorated(true);
+		 //	JDialog.setDefaultLookAndFeelDecorated(true);
 
-		if (item instanceof IS‌kinInir) {
-			((IS‌kinInir) item).ini(frame);
-		} else {
-			setLookAndFeel(item.toString());
+			if (item instanceof IS‌kinInir) {
+				((IS‌kinInir) item).ini(frame);
+			} else {
+				setLookAndFeel(item.toString());
+			}
+			if (Notitlebar) {
+			}
+
+		 
+			SwingUtilities.updateComponentTreeUI(frame);// apply new ui
+			// frame.pack(); jeig bnen use ,beirs main win gchw le
+			// .重置每个顶层容器的大小来适应它所包含的组件的新大小
+		} catch (Exception e) {
+		//	e.printStackTrace();
 		}
-		if (Notitlebar) {
+		
+
+	}
+	
+	
+	private static void switchLnF(String LnF,JFrame frame){	
+		try {
+			JFrame.setDefaultLookAndFeelDecorated(true);
+			UIManager.setLookAndFeel(LnF);
+			SwingUtilities.updateComponentTreeUI(frame);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("Cannot install " + LnF
+					+ " on this platform:" + e.getMessage());
 		}
-
-	 
-		SwingUtilities.updateComponentTreeUI(frame);// apply new ui
-		// frame.pack(); jeig bnen use ,beirs main win gchw le
-		// .重置每个顶层容器的大小来适应它所包含的组件的新大小
-
 	}
 
 	static boolean Notitlebar = false;

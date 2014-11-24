@@ -10,6 +10,13 @@
 	<classpathentry kind="lib" path="Webroot/WEB-INF/lib/nimrodlf-1.1a.jar"/>
 	<classpathentry kind="lib" path="Webroot/WEB-INF/lib/OfficeLnFs_2.7.jar"/>
 	<classpathentry kind="lib" path="Webroot/WEB-INF/lib/PgsLookAndFeel-jide.jar"/>
-	<classpathentry kind="lib" path="Webroot/WEB-INF/lib/substance.jar"/>
+	<classpathentry kind="lib" path="Webroot/WEB-INF/lib/substance6.1.jar"/>
+	<classpathentry kind="lib" path="Webroot/WEB-INF/lib/asm-all-2.2.2.jar"/>
+	<classpathentry kind="lib" path="Webroot/WEB-INF/lib/forms-1.2.0.jar"/>
+	<classpathentry kind="lib" path="Webroot/WEB-INF/lib/laf-plugin.jar"/>
+	<classpathentry kind="lib" path="Webroot/WEB-INF/lib/laf-widget.jar"/>
+	<classpathentry kind="lib" path="Webroot/WEB-INF/lib/substance-swingx.jar"/>
+	<classpathentry kind="lib" path="Webroot/WEB-INF/lib/swingx.jar"/>
+	<classpathentry kind="lib" path="Webroot/WEB-INF/lib/trident.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

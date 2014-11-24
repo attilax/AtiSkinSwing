@@ -3,6 +3,7 @@ package com.attilax.skin;
 import java.awt.Component;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
@@ -11,9 +12,14 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JRootPane;
+import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import org.pushingpixels.substance.api.skin.SubstanceCremeLookAndFeel;
+import org.pushingpixels.substance.api.skin.SubstanceMistAquaLookAndFeel;
+import org.pushingpixels.substance.api.skin.SubstanceSaharaLookAndFeel;
 
 import com.birosoft.liquid.LiquidLookAndFeel;
 
@@ -24,7 +30,7 @@ public class SkinX {
 	// }
 	private static void setUndecoratedTitlebar(JFrame frame, boolean b) {
 		// -----------refresh titlebar
-    if("1".equals("1"))return;
+//    if("1".equals("1"))return;
 		try {
 			frame.hide();
 			frame.setVisible(false);
@@ -56,7 +62,7 @@ public class SkinX {
 	public static Map map;
 	private static Map map2=new HashMap();
 	static {
-		map = new HashMap() {
+		map = new LinkedHashMap() {
 			{
 				this.put("windows", new IS‌kinInir() {
 
@@ -69,6 +75,49 @@ public class SkinX {
 					}
 
 				});
+				
+				this.put("Substance.Creme..", new IS‌kinInir() {
+
+					@Override
+					public void ini(JFrame frame) {
+						 
+						setLookAndFeel(new SubstanceCremeLookAndFeel());
+						setUndecoratedTitlebar(frame, true);
+
+					}
+
+				});
+				
+
+				this.put("Substance.sahara..", new IS‌kinInir() {
+
+					@Override
+					public void ini(JFrame frame) {
+						 
+						setLookAndFeel(new SubstanceSaharaLookAndFeel());
+						setUndecoratedTitlebar(frame, true);
+
+					}
+
+				});
+				
+				this.put("Substance.mistAqua..", new IS‌kinInir() {
+
+					@Override
+					public void ini(JFrame frame) {
+					 
+						setLookAndFeel(new SubstanceMistAquaLookAndFeel());
+						setUndecoratedTitlebar(frame, true);
+
+					}
+
+				});
+				
+				
+			
+				
+			 
+				 
 				map2.put("windows", skinName_class.windows);
 				
 				// --指定为Windows的界面外观, 仅在Windows平台起作用.
@@ -136,8 +185,12 @@ public class SkinX {
 			 
  
 				
-				putX(this,new String[]{"Substance.MistSilver,org.jvnet.substance.skin.SubstanceMistSilverLookAndFeel","Substance.NebulaBrickWall,org.jvnet.substance.skin.SubstanceNebulaBrickWallLookAndFeel","jtattoo.acryl,  com.jtattoo.plaf.acryl.AcrylLookAndFeel","sun.nimbus,com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel",				"substance.BusinessBlueSteel,org.jvnet.substance.skin.SubstanceBusinessBlueSteelLookAndFeel",
-						"Substance.Creme,org.jvnet.substance.skin.SubstanceCremeLookAndFeel"},false);
+				putX(this,new String[]{"Substance.MistSilver,org.jvnet.substance.skin.SubstanceMistSilverLookAndFeel",
+						"Substance.NebulaBrickWall,org.jvnet.substance.skin.SubstanceNebulaBrickWallLookAndFeel",
+						"jtattoo.acryl,  com.jtattoo.plaf.acryl.AcrylLookAndFeel",
+						"sun.nimbus,com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel",	
+						"substance.BusinessBlueSteel,org.jvnet.substance.skin.SubstanceBusinessBlueSteelLookAndFeel",
+						"Substance.Creme,org.jvnet.substance.skin.SubstanceCremeLookAndFeel"},true);
 				
 				
 				
@@ -158,10 +211,20 @@ public class SkinX {
 		};
 	}
 
-	private static void setLookAndFeel(String skinClass) {
-		skinClass=skinClass.trim();
+	/**
+	 * BasicLookAndFeel
+	 * @param skinClass
+	 */
+	private static void setLookAndFeel(Object skinClass) {
+		
 		try {
-			UIManager.setLookAndFeel(skinClass);
+			if(skinClass instanceof String)
+			{
+				skinClass=skinClass.toString().trim();
+			UIManager.setLookAndFeel(skinClass.toString());
+			}else
+				UIManager.setLookAndFeel((LookAndFeel) skinClass);
+				
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new RuntimeException("ClassNotFoundException" + skinClass);
@@ -224,9 +287,10 @@ public class SkinX {
 	}
 
 	public static void setSkin(String index, JFrame frame) {
-		switchLnF( SkinX.map2.get(index).toString(),frame);
-		if("1".equals("1"))return;
-		
+//		switchLnF( SkinX.map2.get(index).toString(),frame);
+	//	if("1".equals("1"))return;
+	 
+	//	org.jvnet.substance.skin.SubstanceMistSilverLookAndFeel
 		try {
 			Object item = SkinX.map.get(index);
 		
@@ -250,6 +314,8 @@ public class SkinX {
 		} catch (Exception e) {
 		//	e.printStackTrace();
 		}
+		// org.jvnet.substance.utils.SubstanceTitlePane
+		/// org.jvnet.substance.utils.SubstanceTitlePane.
 		
 
 	}

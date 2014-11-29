@@ -30,25 +30,17 @@ public class SkinX {
 	// }
 	private static void setUndecoratedTitlebar(JFrame frame, boolean b) {
 		// -----------refresh titlebar
-//    if("1".equals("1"))return;
+  //  if("1".equals("1"))return;
 		try {
 			frame.hide();
 			frame.setVisible(false);
 		 	frame.dispose();
 		 
 			frame.setUndecorated(b);
-			// if(index.equals("windows"))
-			// {
-			// frame.setUndecorated(false);// set Notitlebar true
-			// //set frame whether show raw ExtraTitlebar
-			// }else
-			// {
-			// frame.setUndecorated(true);
-			// }
+ 
 
 			frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);// set
-		//	frame.show();		
-		//	frame.sh// titlebar
+ 
 			Notitlebar = true;
 			
 		 	frame.setVisible(true);
@@ -296,7 +288,7 @@ public class SkinX {
 		
 
 			// 改变标题栏 title bar and border JFrame JDialog
-		 	JFrame.setDefaultLookAndFeelDecorated(true);
+		 //	JFrame.setDefaultLookAndFeelDecorated(true);
 		 //	JDialog.setDefaultLookAndFeelDecorated(true);
 
 			if (item instanceof IS‌kinInir) {

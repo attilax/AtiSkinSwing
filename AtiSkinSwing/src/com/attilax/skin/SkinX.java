@@ -56,30 +56,20 @@ public class SkinX {
 	static {
 		map = new LinkedHashMap() {
 			{
-				this.put("windows", new IS‌kinInir() {
-
-					@Override
-					public void ini(JFrame frame) {
-						 
-						setLookAndFeel(skinName_class.windows);
-						setUndecoratedTitlebar(frame, false);
-
-					}
-
-				});
 				
-				this.put("Substance.Creme..", new IS‌kinInir() {
-
-					@Override
-					public void ini(JFrame frame) {
-						 
-						setLookAndFeel(new SubstanceCremeLookAndFeel());
-						setUndecoratedTitlebar(frame, true);
-
-					}
-
-				});
 				
+//				this.put("Substance.Creme..", new IS‌kinInir() {
+//
+//					@Override
+//					public void ini(JFrame frame) {
+//						 
+//						setLookAndFeel(new SubstanceCremeLookAndFeel());
+//						setUndecoratedTitlebar(frame, true);
+//
+//					}
+//
+//				});
+//				
 
 				this.put("Substance.sahara..", new IS‌kinInir() {
 
@@ -107,7 +97,17 @@ public class SkinX {
 				
 				
 			
-				
+				this.put("windows", new IS‌kinInir() {
+
+					@Override
+					public void ini(JFrame frame) {
+						 
+						setLookAndFeel(skinName_class.windows);
+						setUndecoratedTitlebar(frame, false);
+
+					}
+
+				});
 			 
 				 
 				map2.put("windows", skinName_class.windows);
